@@ -24,7 +24,9 @@
       "google-apis-authentication": "./dist/nodes/google-apis-authentication/google-apis-authentication.js"
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "googleapis": "^109.0.1"
+  },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.0.0",
     "@types/express": "^4.17.9",

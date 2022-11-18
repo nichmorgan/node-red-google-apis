@@ -34,7 +34,6 @@ RED.nodes.registerType<GoogleApisEditorNodeProperties>("google-apis", {
     else return "google apis";
   },
   oneditprepare() {
-    const node = this;
     const selectAPI = $("#node-input-api");
     const selectMethod = $("#node-input-method");
     const scopesInfo = $("#node-scopes-info");
@@ -46,15 +45,15 @@ RED.nodes.registerType<GoogleApisEditorNodeProperties>("google-apis", {
       const api = selectAPI.val();
 
       if (api) {
-        $.getJSON("google-apis/" + api + "/info", function (data) {
+        $.getJSON("google-apis/" + api + "/info", (data) => {
           debugger;
           selectMethod.children().last().after(data.methods.map((d: string) => {
-            return $("<option></option>").attr("value", d).attr("selected", String(node.method === d)).text(d).wrap("<p/>").parent().html();
+            return $("<option></option>").attr("value", d).attr("selected", String(this.method === d)).text(d).wrap("<p/>").parent().html();
           }).join(""));
-          if (data.methods.indexOf(node.method) < 0) {
+          if (data.methods.indexOf(this.method) < 0) {
             $("#node-input-dynamic-method").attr("selected", "true");
           };
-          $.each(data.scopes, function (i, v) {
+          $.each(data.scopes, (i, v) => {
             scopesInfo.append($("<li></li>").text(v));
           });
         });
@@ -64,12 +63,12 @@ RED.nodes.registerType<GoogleApisEditorNodeProperties>("google-apis", {
       selectMethod.on("change", false);
     });
 
-    $.getJSON("google-apis/list", function (data) {
+    $.getJSON("google-apis/list", (data) => {
       debugger;
-      selectAPI.children().last().after(data.map(function (d: string) {
-        return $("<option></option>").attr("value", d).attr("selected", String(node.api === d)).text(d).wrap("<p/>").parent().html();
+      selectAPI.children().last().after(data.map((d: string) => {
+        return $("<option></option>").attr("value", d).attr("selected", String(this.api === d)).text(d).wrap("<p/>").parent().html();
       }).join(""));
-      if (data.indexOf(node.api) < 0) {
+      if (data.indexOf(this.api) < 0) {
         $("#node-input-dynamic-api").attr("selected", "true");
       }
       selectAPI.on("change", false);

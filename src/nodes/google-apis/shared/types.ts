@@ -1,8 +1,8 @@
-import { GoogleApisAuthenticationOptions } from "../../google-apis-authentication/shared/types";
+import { GoogleApisAuthenticationNode } from '../../google-apis-authentication/modules/types';
 
 export interface GoogleApisOptions {
   // node options
-  authentication: GoogleApisAuthenticationOptions
-  api: unknown
-  method: unknown
+  authentication: GoogleApisAuthenticationNode
+  api: string
+  method: string
 }
