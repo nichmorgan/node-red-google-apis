@@ -1,0 +1,87 @@
+<script type="text/html" data-template-name="google-apis">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-authentication"
+      ><i class="fa fa-address-card"></i> Auth</label
+    >
+    <input type="text" id="node-input-authentication" />
+  </div>
+  <div class="form-row">
+    <label for="node-input-api"><i class="fa fa-list"></i> API</label>
+    <select type="text" id="node-input-api" style="display: inline-block;">
+      <option value="" id="node-input-dynamic-api" style="font-style: italic;">
+        Dynamic (msg.api)
+      </option>
+    </select>
+  </div>
+  <div class="form-row">
+    <label for="node-input-method"><i class="fa fa-code"></i> Method</label>
+    <select type="text" id="node-input-method" style="display: inline-block;">
+      <option
+        value=""
+        id="node-input-dynamic-method"
+        style="font-style: italic;"
+      >
+        Dynamic (msg.method)
+      </option>
+    </select>
+  </div>
+  <div class="form-row">
+    <label for="node-scopes-info">Scopes:</label>
+    <ul id="node-scopes-info"></ul>
+  </div>
+</script>
+
+<script type="text/html" data-help-name="google-apis">
+  <p>
+    Calls methods of the Google APIs, using the official
+    <strong>google-api-nodejs-client</strong> library.
+  </p>
+
+  <h3>Inputs</h3>
+  <dl class="message-properties">
+    <dt>payload<span class="property-type">object</span></dt>
+    <dd>The parameters to be passed to the selected method.</dd>
+  </dl>
+  <dl class="message-properties">
+    <dt>api<span class="property-type">string</span></dt>
+    <dd>
+      If not configured in the node, this optional property sets the name of the
+      API to be used.
+    </dd>
+  </dl>
+  <dl class="message-properties">
+    <dt>method<span class="property-type">string</span></dt>
+    <dd>
+      If not configured in the node, this optional property sets the name of the
+      method to be called.
+    </dd>
+  </dl>
+  <h3>Outputs</h3>
+  <dl class="message-properties">
+    <dt>payload<span class="property-type">buffer</span></dt>
+    <dd>The response received from the Google API.</dd>
+  </dl>
+  <p>
+    Depending on the method called, the received buffer can be converted to a
+    string (<code>Buffer.from(msg.payload)</code>) an object
+    (<code>JSON.parse(msg.payload.toString())</code>) etc.
+  </p>
+  <h3>References</h3>
+  <ul>
+    <li>
+      <a href="https://github.com/google/google-api-nodejs-client"
+        >google-api-nodejs-client</a
+      >
+      - details of the official client library
+    </li>
+    <li>
+      <a href="https://developers.google.com/apis-explorer/"
+        >Google APIs Explorer</a
+      >
+    </li>
+  </ul>
+</script>
